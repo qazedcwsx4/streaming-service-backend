@@ -12,7 +12,7 @@ func MalHandler(r *gin.Engine) {
 
 func getAnimeByMalId(c *gin.Context) {
 	type getAnimeByMalIdParameters struct {
-		MalId int `form:"mal_id" binding:"required"`
+		MalId int `form:"malId" binding:"required"`
 	}
 	var parameters getAnimeByMalIdParameters
 

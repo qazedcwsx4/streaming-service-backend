@@ -1,16 +1,19 @@
 package handler
 
 import (
-	"anime-server-go/database"
 	"github.com/gin-gonic/gin"
+	"log"
 )
 
 func AnimeHandler(r *gin.Engine) {
-	entries := database.GetAllEntries()
+	r.POST("/anime/add", func(c *gin.Context) {
+		form, _ := c.MultipartForm()
+		files := form.File["file"]
 
-	r.GET("/anime/getAll", func(c *gin.Context) {
-		c.JSON(200, entries)
+		for _, file := range files {
+			log.Println(file.Filename)
+		}
+
+		c.Writer.WriteHeader(200)
 	})
-
-	r.GET("/")
 }

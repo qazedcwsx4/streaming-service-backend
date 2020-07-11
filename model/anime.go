@@ -15,9 +15,10 @@ func FromMalAnime(malAnime *jikan.Anime) Anime {
 	return Anime{
 		Series: Series{
 			Entry: Entry{
-				Name:        malAnime.Title,
-				ImageUrl:    malAnime.ImageURL,
-				Description: malAnime.Synopsis,
+				Name:         malAnime.Title,
+				ImageUrl:     malAnime.ImageURL,
+				Description:  malAnime.Synopsis,
+				EpisodeCount: malAnime.Episodes,
 			},
 		},
 		MalId:      malAnime.MalID,

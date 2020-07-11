@@ -93,28 +93,44 @@ func InsertAnime() error {
 	if err != nil {
 		return err
 	}
-	if err := execAndHandle(tx, "INSERT INTO entry (name, image, description) VALUES ('testName', 'testImage', 'testDescription');"); err != nil {
+	if err := execAndHandle(tx,
+		// language=SQL
+		"INSERT INTO entry (name, image, description) VALUES ('testName', 'testImage', 'testDescription');"); err != nil {
 		return err
 	}
-	if err := execAndHandle(tx, "SELECT @entry_id := LAST_INSERT_ID();"); err != nil {
+	if err := execAndHandle(tx,
+		// language=SQL
+		"SELECT @entry_id := LAST_INSERT_ID();"); err != nil {
 		return err
 	}
-	if err := execAndHandle(tx, "INSERT INTO series (entry_id) VALUES (@entry_id);"); err != nil {
+	if err := execAndHandle(tx,
+		// language=SQL
+		"INSERT INTO series (entry_id) VALUES (@entry_id);"); err != nil {
 		return err
 	}
-	if err := execAndHandle(tx, "INSERT INTO anime (series_id, mal_reference) VALUES (LAST_INSERT_ID(), 'testMalReference');"); err != nil {
+	if err := execAndHandle(tx,
+		// language=SQL
+		"INSERT INTO anime (series_id, mal_reference) VALUES (LAST_INSERT_ID(), 'testMalReference');"); err != nil {
 		return err
 	}
-	if err := execAndHandle(tx, "INSERT INTO episode (entry_id) VALUES (@entry_id);"); err != nil {
+	if err := execAndHandle(tx,
+		// language=SQL
+		"INSERT INTO episode (entry_id) VALUES (@entry_id);"); err != nil {
 		return err
 	}
-	if err := execAndHandle(tx, "SELECT @episode_id := LAST_INSERT_ID();"); err != nil {
+	if err := execAndHandle(tx,
+		// language=SQL
+		"SELECT @episode_id := LAST_INSERT_ID();"); err != nil {
 		return err
 	}
-	if err := execAndHandle(tx, "INSERT INTO subtitle (episode_id, language, status, subtitle_path) VALUES (@episode_id, 'testLanguage', 'testStatus', 'testSubtitlePath');"); err != nil {
+	if err := execAndHandle(tx,
+		// language=SQL
+		"INSERT INTO subtitle (episode_id, language, status, subtitle_path) VALUES (@episode_id, 'testLanguage', 'testStatus', 'testSubtitlePath');"); err != nil {
 		return err
 	}
-	if err := execAndHandle(tx, "INSERT INTO video (episode_id, video_path) VALUES (@episode_id, 'testVideoPath');"); err != nil {
+	if err := execAndHandle(tx,
+		// language=SQL
+		"INSERT INTO video (episode_id, video_path) VALUES (@episode_id, 'testVideoPath');"); err != nil {
 		return err
 	}
 	err = tx.Commit()
